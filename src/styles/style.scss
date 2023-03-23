@@ -1,6 +1,42 @@
-.hello {
-  color: red;
+$headerColor: #df5418;
+$bodyBackground: #09364d;
+$pagesBtn: #e8875d;
+$pagesBtnHover: #efaa8c;
+
+@mixin centerize {
+  display: flex;
+  justify-content: center;
 }
-p {
-  color: blue;
+
+* {
+  text-decoration: none;
+  font-size: 14px;
+}
+
+body {
+  margin: 0;
+  background-color: $bodyBackground;
+}
+
+.header {
+  width: 100%;
+  background-color: $headerColor;
+  z-index: 99;
+  @include centerize();
+  button {
+    background-color: $pagesBtn;
+    margin: 2em;
+    width: 8em;
+    height: 8em;
+    border-radius: 1em;
+    cursor: pointer;
+    border: none;
+    &:hover {
+      background-color: $pagesBtnHover;
+      width: 9em;
+      height: 9em;
+      margin: 1.5em 1.5em 0 1.5em;
+      font-weight: bolder;
+    }
+  }
 }
