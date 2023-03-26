@@ -24,18 +24,21 @@
       margin: 0;
     }
   }
-  p:nth-child(2) {    
+  p:nth-child(2) {
     min-height: 55px;
     overflow: hidden;
     -webkit-mask-image: linear-gradient(180deg, #000 50%, transparent);
   }
-  
+
   p:nth-child(3) {
     font-weight: bold;
   }
 }
 
 .page-content {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s;
   @include centerize();
   .wrapper-menu {
     max-width: 1170px;
@@ -45,6 +48,11 @@
     margin: 2em 0;
     padding: 0;
   }
+}
+
+.page-content.show {
+  display: flex;
+  opacity: 1;
 }
 
 .grid {
