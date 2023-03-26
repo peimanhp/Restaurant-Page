@@ -1,0 +1,53 @@
+.card {
+  max-height: 170px;
+  color: white;
+  background-color: $cardBackground;
+  border-radius: 0.7em;
+  padding: 1em;
+  display: flex;
+  img {
+    min-width: 10em;
+    height: 10em;
+    object-fit: cover;
+    border-radius: 0.5em;
+  }
+  .card-content {
+    max-height: 10em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 1em;
+
+    h2 {
+      font-size: 1.1em;
+      font-weight: 800;
+      margin: 0;
+    }
+  }
+  p:nth-child(2) {    
+    min-height: 55px;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(180deg, #000 50%, transparent);
+  }
+  
+  p:nth-child(3) {
+    font-weight: bold;
+  }
+}
+
+.page-content {
+  @include centerize();
+  .wrapper-menu {
+    max-width: 1170px;
+  }
+  ul {
+    list-style: none;
+    margin: 2em 0;
+    padding: 0;
+  }
+}
+
+.grid {
+  display: grid;
+  gap: 1em;
+}

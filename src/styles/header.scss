@@ -1,0 +1,22 @@
+.header {
+  width: 100%;
+  background-color: $headerColor;
+  z-index: 99;
+  @include centerize();
+  button {
+    color: white;
+    background-color: $pagesBtn;
+    margin: 2em;
+    width: 8em;
+    height: 8em;
+    border-radius: 1em;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.3s ease-in-out;
+    &:hover {
+      background-color: $pagesBtnHover;
+      transform: scale(1.1);
+      font-weight: 900;
+    }
+  }
+}
