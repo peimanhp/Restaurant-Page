@@ -1,0 +1,41 @@
+.page-content {
+  @include centerize();
+  .home {
+    opacity: 0;
+    transition: opacity 0.5s;
+    max-width: 1170px;
+  }  
+}
+
+.home {
+  @include centerize();
+  flex-direction:  column;
+  align-items: center;  
+  margin-top: 2em;
+  color: white;
+  background-color: $cardBackground;
+  border-radius: 0.7em;
+  h2 {
+    text-align: center;
+    font-size: 2em;
+    font-weight: bolder;
+    margin-bottom: 0;
+  }
+  h3 {
+    text-align: center;    
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+
+  img {    
+    width: 500px;
+    height: 500px;    
+    object-fit: cover;
+    border-radius: 50%;
+  }
+}
+
+.home.show {
+  opacity: 1;
+}
+

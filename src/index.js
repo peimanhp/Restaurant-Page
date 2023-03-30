@@ -28,19 +28,98 @@ header.appendChild(homeBtn);
 header.appendChild(menuBtn);
 header.appendChild(aboutBtn);
 
-// Menu page
+function homeBtnHovered() {
+  homeBtn.style.scale = "1.1";
+  homeBtn.style.backgroundColor = "#efaa8c";
+  homeBtn.style.fontWeight = "900";
+}
+
+function homeBtnDefault() {
+  homeBtn.style.backgroundColor = "#e8875d";
+  homeBtn.style.scale = "1";
+  homeBtn.style.fontWeight = "400";
+}
+
+function menuBtnHovered() {
+  menuBtn.style.scale = "1.1";
+  menuBtn.style.backgroundColor = "#efaa8c";
+  menuBtn.style.fontWeight = "900";
+}
+
+function menuBtnDefault() {
+  menuBtn.style.backgroundColor = "#e8875d";
+  menuBtn.style.scale = "1";
+  menuBtn.style.fontWeight = "400";
+}
+
+function aboutBtnHovered() {
+  aboutBtn.style.scale = "1.1";
+  aboutBtn.style.backgroundColor = "#efaa8c";
+  aboutBtn.style.fontWeight = "900";
+}
+
+function aboutBtnDefault() {
+  aboutBtn.style.backgroundColor = "#e8875d";
+  aboutBtn.style.scale = "1";
+  aboutBtn.style.fontWeight = "400";
+}
+
+// general
 
 const pageContent = document.createElement("div");
 pageContent.classList.add("page-content");
 content.appendChild(pageContent);
 
-function showMenuPage() {
-  pageContent.innerHTML = "";
-  pageContent.classList.add("show");
+const wrapperMenu = document.createElement("div");
+wrapperMenu.classList.add("wrapper-menu");
+pageContent.appendChild(wrapperMenu);
 
-  const wrapperMenu = document.createElement("div");
-  wrapperMenu.classList.add("wrapper-menu");
-  pageContent.appendChild(wrapperMenu);
+const home = document.createElement("div");
+home.classList.add("home");
+pageContent.appendChild(home);
+
+function fadeInMenu() {
+  wrapperMenu.innerHTML = "";
+  wrapperMenu.classList.add("show");
+}
+
+function fadeInHome() {
+  home.innerHTML = "";
+  home.classList.add("show");
+}
+
+function cleanPage() {
+  home.innerHTML = "";
+  wrapperMenu.innerHTML = "";
+  home.classList.remove("show");
+  wrapperMenu.classList.remove("show");
+  home.style.width = '0';
+  wrapperMenu.style.width = '0';
+  homeBtnDefault(); 
+  menuBtnDefault(); 
+  aboutBtnDefault(); 
+  activatedHomeBtn = false;
+  activatedMenuBtn = false;
+  activatedAboutBtn = false;
+}
+
+// Menu page
+
+// button hover style with JS
+let activatedMenuBtn = false;
+menuBtn.addEventListener("mouseenter", () => {
+  if (activatedMenuBtn == false) menuBtnHovered();  
+});
+menuBtn.addEventListener("mouseleave", () => {
+  if (activatedMenuBtn == false) menuBtnDefault();
+})
+
+function showMenuPage() {
+  cleanPage();
+  fadeInMenu();
+  menuBtnHovered();
+  wrapperMenu.style.width = "100%";
+  activatedMenuBtn = true;  
 
   const ul = document.createElement("ul");
   ul.classList.add("grid");
@@ -145,14 +224,51 @@ function showMenuPage() {
 
 // Home page
 
-function showHomePage() {
-  pageContent.innerHTML = "";
-  pageContent.classList.remove("show");
+// button hover style with JS
+let activatedHomeBtn = false;
+homeBtn.addEventListener("mouseenter", () => {
+  if (activatedHomeBtn == false) homeBtnHovered();  
+});
+homeBtn.addEventListener("mouseleave", () => {
+  if (activatedHomeBtn == false)  homeBtnDefault();  
+})
+
+function showHomePage() {  
+  cleanPage();
+  fadeInHome();
+  homeBtnHovered();
+  activatedHomeBtn = true;
+  home.style.width = "40%";  
+
+  const homeTitle = document.createElement("h2");
+  homeTitle.innerText = "Best Pizza in Iran";
+  home.appendChild(homeTitle);
+
+  const homeSubTitle = document.createElement("h3");
+  homeSubTitle.innerText = "Made with passion since 1988";
+  home.appendChild(homeSubTitle);
+
+  const homeImage = document.createElement("img");
+  homeImage.setAttribute("src", "../src/images/home-photo.jpg");
+  home.appendChild(homeImage);
+
+  const imageCaption = document.createElement("h3");
+  imageCaption.innerText = "Order online or visit us!";
+  home.appendChild(imageCaption);
 }
 
 // About page
 
+let activatedAboutBtn = false;
+aboutBtn.addEventListener("mouseenter", () => {
+  if (activatedAboutBtn == false) aboutBtnHovered();
+});
+aboutBtn.addEventListener("mouseleave", () => {
+  if (activatedAboutBtn == false) aboutBtnDefault();
+});
+
 function showAboutPage() {
-  pageContent.innerHTML = "";
-  pageContent.classList.remove("show");
+  cleanPage();
+  aboutBtnHovered();
+  activatedAboutBtn = true;
 }

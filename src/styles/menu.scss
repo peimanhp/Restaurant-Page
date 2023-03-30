@@ -36,11 +36,10 @@
 }
 
 .page-content {
-  display: none;
-  opacity: 0;
-  transition: opacity 0.5s;
-  @include centerize();
+  @include centerize();  
   .wrapper-menu {
+    opacity: 0;
+    transition: opacity 0.5s;
     max-width: 1170px;
   }
   ul {
@@ -50,8 +49,7 @@
   }
 }
 
-.page-content.show {
-  display: flex;
+.wrapper-menu.show {
   opacity: 1;
 }
 
