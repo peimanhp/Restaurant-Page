@@ -6,17 +6,11 @@
   button {
     color: white;
     background-color: $pagesBtn;
-    margin: 2em;
-    width: 8em;
-    height: 8em;
+    margin: 1em;
+    width: 7em;
+    height: 7em;
     border-radius: 1em;
     cursor: pointer;
-    border: none;
-    transition: transform 0.3s ease-in-out;
-    // &:hover {
-    //   background-color: $pagesBtnHover;
-    //   transform: scale(1.1);
-    //   font-weight: 900;
-    // }
+    border: none;    
   }
 }

@@ -38,22 +38,69 @@ body {
     grid-template-columns: 1fr 1fr;
   }
   .page-content {
-    .home , .wrapper-menu , .about {
+    .home,
+    .wrapper-menu,
+    .about {
       max-width: 720px;
     }
+    .home img {
+      width: 50vw;
+      height: 50vw;
+    }
+    .about img {
+      width: 50vw;
+      height: 50vw;
+    }
+    .about div {
+      width: 50vw;
+      
+    }
+  }
+  .header button {
+    margin: 2em;
+    width: 8em;
+    height: 8em;
   }
 }
 @media only screen and (min-width: 992px) {
   .page-content {
-    .home , .wrapper-menu , .about {
+    .home,
+    .wrapper-menu,
+    .about {
       max-width: 960px;
+    }
+    .home img {
+      width: 40vw;
+      height: 40vw;
+    }
+    .about img {
+      width: 40vw;
+      height: 40vw;
+    }
+    .about div {
+      width: 40vw;
+      
     }
   }
 }
 @media only screen and (min-width: 1200px) {
   .page-content {
-    .home , .wrapper-menu , .about {
+    .home,
+    .wrapper-menu,
+    .about {
       max-width: 1140px;
+    }
+    .home img {
+      width: 30vw;
+      height: 30vw;
+    }
+    .about img {
+      width: 30vw;
+      height: 30vw;
+    }
+    .about div {
+      width: 30vw;
+      
     }
   }
 }

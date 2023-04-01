@@ -1,5 +1,15 @@
-import { wrap } from "lodash";
+import { indexOf, wrap } from "lodash";
 import "./styles/style.scss";
+import brisketImg from "../src/images/brisket-normal.jpg";
+import chickePestoImg from "../src/images/chicken-pesto-normal.jpg";
+import jamaicanImg from "../src/images/jamaican-chicken-normal.jpg";
+import margheritaImg from "../src/images/margherita-normal.jpg";
+import quattroImg from "../src/images/quattro-formaggi-normal.jpg";
+import salamiImg from "../src/images/salami-normal.jpg";
+import turkeyImg from "../src/images/turkey-normal.jpg";
+import vegetablesImg from "../src/images/vegetables-normal.jpg";
+import homeImg from "../src/images/home-photo.jpg";
+import mapImg from "../src/images/map.jpg";
 
 const content = document.getElementById("content");
 
@@ -12,16 +22,19 @@ const homeBtn = document.createElement("button");
 homeBtn.id = "home";
 homeBtn.innerText = "Home";
 homeBtn.addEventListener("click", showHomePage);
+homeBtn.style.transition = "all 0.3s ease-in-out";
 
 const menuBtn = document.createElement("button");
 menuBtn.id = "menu";
 menuBtn.innerText = "Menu";
 menuBtn.addEventListener("click", showMenuPage);
+menuBtn.style.transition = "all 0.3s ease-in-out";
 
 const aboutBtn = document.createElement("button");
 aboutBtn.id = "about";
 aboutBtn.innerText = "About";
 aboutBtn.addEventListener("click", showAboutPage);
+aboutBtn.style.transition = "all 0.3s ease-in-out";
 
 content.appendChild(header);
 header.appendChild(homeBtn);
@@ -78,6 +91,10 @@ const home = document.createElement("div");
 home.classList.add("home");
 pageContent.appendChild(home);
 
+const about = document.createElement("div");
+about.classList.add("about");
+pageContent.appendChild(about);
+
 function fadeInMenu() {
   wrapperMenu.innerHTML = "";
   wrapperMenu.classList.add("show");
@@ -88,38 +105,51 @@ function fadeInHome() {
   home.classList.add("show");
 }
 
+function fadeInAbout() {
+  about.innerHTML = "";
+  about.classList.add("show");
+}
+
 function cleanPage() {
   home.innerHTML = "";
   wrapperMenu.innerHTML = "";
+  about.innerHTML = '';
   home.classList.remove("show");
   wrapperMenu.classList.remove("show");
-  home.style.width = '0';
-  wrapperMenu.style.width = '0';
-  homeBtnDefault(); 
-  menuBtnDefault(); 
-  aboutBtnDefault(); 
+  about.classList.remove("show");
+  home.style.width = "0";
+  wrapperMenu.style.width = "0";
+  about.style.width = "0";
+  homeBtnDefault();
+  menuBtnDefault();
+  aboutBtnDefault();
   activatedHomeBtn = false;
   activatedMenuBtn = false;
   activatedAboutBtn = false;
 }
+
+// first load on home page
+window.onload = () => {
+  showHomePage();
+};
 
 // Menu page
 
 // button hover style with JS
 let activatedMenuBtn = false;
 menuBtn.addEventListener("mouseenter", () => {
-  if (activatedMenuBtn == false) menuBtnHovered();  
+  if (activatedMenuBtn == false) menuBtnHovered();
 });
 menuBtn.addEventListener("mouseleave", () => {
   if (activatedMenuBtn == false) menuBtnDefault();
-})
+});
 
 function showMenuPage() {
   cleanPage();
   fadeInMenu();
   menuBtnHovered();
   wrapperMenu.style.width = "100%";
-  activatedMenuBtn = true;  
+  activatedMenuBtn = true;
 
   const ul = document.createElement("ul");
   ul.classList.add("grid");
@@ -169,56 +199,56 @@ function showMenuPage() {
     "Brisket Pizza",
     "Tomato sauce + mozzarella cheese + mushroom + veal fillet + onion + olive + rocket + oregano",
     "Price: 20$",
-    "../src/images/brisket-normal.jpg"
+    brisketImg
   );
 
   const chickenPesto = new Food(
     "Chicken Pesto Pizza",
     "Pesto sauce + mozzarella cheese + spinach + mushrooms + smoked chicken breast + olives + dried tomatoes",
     "Price: 22$",
-    "../src/images/chicken-pesto-normal.jpg"
+    chickePestoImg
   );
 
   const jamaicanChicken = new Food(
     "Jamaican Chicken Pizza",
     "Tomato sauce + mozzarella cheese + mushroom + Jamaican chicken breast (spicy) + onion + olive",
     "Price: 23$",
-    "../src/images/jamaican-chicken-normal.jpg"
+    jamaicanImg
   );
 
   const margherita = new Food(
     "Margherita Pizza",
     "Tomato sauce + mozzarella cheese + cottage mozzarella cheese + Italian basil + oregano",
     "Price: 21$",
-    "../src/images/margherita-normal.jpg"
+    margheritaImg
   );
 
   const quattroFormaggi = new Food(
     "Quattro Formaggi Pizza",
     "Tomato sauce + mozzarella cheese + blue cheese + buttered cheese + white cheese + oregano",
     "Price: 25$",
-    "../src/images/quattro-formaggi-normal.jpg"
+    quattroImg
   );
 
   const salami = new Food(
     "Salami Pizza",
     "Tomato sauce + mozzarella cheese + salami + oregano",
     "Price: 22$",
-    "../src/images/salami-normal.jpg"
+    salamiImg
   );
 
   const turkey = new Food(
     "Turkey Pizza",
     "Tomato sauce + mozzarella cheese + turkey bacon + mushroom + olive + oregano",
     "Price: 25$",
-    "../src/images/turkey-normal.jpg"
+    turkeyImg
   );
 
   const vegetables = new Food(
     "Vegetables Pizza",
     "Tomato sauce + mozzarella cheese + seasoned zucchini and eggplant + spinach + mushroom + onion + cherry tomato + bell pepper + corn + oregano",
     "Price: 23$",
-    "../src/images/vegetables-normal.jpg"
+    vegetablesImg
   );
 }
 
@@ -227,18 +257,18 @@ function showMenuPage() {
 // button hover style with JS
 let activatedHomeBtn = false;
 homeBtn.addEventListener("mouseenter", () => {
-  if (activatedHomeBtn == false) homeBtnHovered();  
+  if (activatedHomeBtn == false) homeBtnHovered();
 });
 homeBtn.addEventListener("mouseleave", () => {
-  if (activatedHomeBtn == false)  homeBtnDefault();  
-})
+  if (activatedHomeBtn == false) homeBtnDefault();
+});
 
-function showHomePage() {  
+function showHomePage() {
   cleanPage();
   fadeInHome();
   homeBtnHovered();
   activatedHomeBtn = true;
-  home.style.width = "40%";  
+  home.style.width = "40%";
 
   const homeTitle = document.createElement("h2");
   homeTitle.innerText = "Best Pizza in Iran";
@@ -249,7 +279,7 @@ function showHomePage() {
   home.appendChild(homeSubTitle);
 
   const homeImage = document.createElement("img");
-  homeImage.setAttribute("src", "../src/images/home-photo.jpg");
+  homeImage.setAttribute("src", homeImg);
   home.appendChild(homeImage);
 
   const imageCaption = document.createElement("h3");
@@ -269,6 +299,23 @@ aboutBtn.addEventListener("mouseleave", () => {
 
 function showAboutPage() {
   cleanPage();
+  fadeInAbout();
   aboutBtnHovered();
   activatedAboutBtn = true;
+  about.style.width = "40%";
+
+  const infoTexts = document.createElement('div');
+  about.appendChild(infoTexts);
+
+  const phone = document.createElement("h3");
+  phone.innerText = "📞 (+1) 123 456";
+  infoTexts.appendChild(phone);
+
+  const locAddress = document.createElement("h3");
+  locAddress.innerText = "🏠 Andarzgou Boulevard 35, Tehran, Iran";
+  infoTexts.appendChild(locAddress);
+  
+  const aboutImage = document.createElement("img");
+  aboutImage.setAttribute("src", mapImg);
+  about.appendChild(aboutImage);
 }
